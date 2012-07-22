@@ -1,0 +1,1 @@
+src/euler/solutions/p47.scala
