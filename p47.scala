@@ -9,7 +9,22 @@ import euler.helpers._
 
 object p47 extends ProjectEulerApp {
 
-  val f = Primes.primeFactorization(_)
+  def number = 47
+  def text =
+    """
+      |The first two consecutive numbers to have two distinct prime factors are:
+      |
+      |14 = 2 x 7
+      |15 = 3 x 5
+      |
+      |The first three consecutive numbers to have three distinct prime factors are:
+      |
+      |644 = 2² x 7 x 23
+      |645 = 3 x 5 x 43
+      |646 = 2 x 17 x 19.
+      |
+      |Find the first four consecutive integers to have four distinct primes factors. What is the first of these numbers?
+    """
 
   val GUESS = 2000000
   Primes.initializeSieve(GUESS)
@@ -51,23 +66,6 @@ object p47 extends ProjectEulerApp {
   }
   println(find(Primes.primes))
 
-  def number = 47
-
-  def text =
-    """
-      |The first two consecutive numbers to have two distinct prime factors are:
-      |
-      |14 = 2 x 7
-      |15 = 3 x 5
-      |
-      |The first three consecutive numbers to have three distinct prime factors are:
-      |
-      |644 = 2² x 7 x 23
-      |645 = 3 x 5 x 43
-      |646 = 2 x 17 x 19.
-      |
-      |Find the first four consecutive integers to have four distinct primes factors. What is the first of these numbers?
-    """
   /**
    * Scratch
    * narrow: search list of primes where x_(n + 1) - x(n) > = 4
