@@ -14,6 +14,7 @@ package euler.helpers
 object Primes {
   private var helper : Primes = null
 
+  /** Finds the prime factorization using factors from the sieve. See Primes class. */
   def primeFactorization(n : Int) : Map[Int, Int] = {
     if (helper == null || helper.limit < n) {
       helper = new Primes(n)
@@ -28,23 +29,8 @@ object Primes {
         }
       }
     }
+
     factor(Map(), n)
-  /*  // Implementation: Simple trial division by examining primes only
-    def inner(factored: Int, xs: List[Int], m: Map[Int, Int]) : Map[Int, Int] = {
-      def divideCount(x: Int, d: Int, count: Int) : (Int, Int) =
-        if (x % d == 0) divideCount(x / d, d, count + 1) else (x, count)
-
-      xs match {
-        case prime::xt => {
-          val (leftover, exp) = divideCount(factored, prime, 0)
-          if (exp != 0) inner(leftover, xt, m + (prime -> exp))
-          else inner(leftover, xt, m)
-        }
-        case Nil => m
-      }
-    }
-
-    inner(n, primesLEq(n).toList, Map[Int, Int]())*/
   }
 
   /** Initialize a prime sieve to a certain limit. Required to generate primes */
@@ -63,7 +49,7 @@ private class Primes(val limit: Int) {
   /**
    * `Sieve`: Sieve of Eratosthenes. sieve(n) returns whether n is prime
    * `Primes`: A list of primes up until limit
-   * `Factors`: factors(n) returns a factor of n. convenient for factoring
+   * `Factors`: factors(n) returns a factor of n. convenient for factoring numbers known to be not-prime in the sieve.
    */
   private lazy val (sieve, primes, factors) = initializeSieve(limit + 1)
 

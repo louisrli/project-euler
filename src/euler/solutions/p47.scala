@@ -23,12 +23,14 @@ object p47 extends ProjectEulerApp {
   def find (xs: List[Int]) : Option[Int] = {
     xs match {
       case p1::p2::xt => {
-        if (p2 - p1 < 5) find(p2::xt)
+        if (p2 - p1 <= 4) find(p2::xt)
         else {
-          // Find distinct prime factor counts, then check that they all equal four
           println("Examining primes %d and %d (delta %d)..." format (p1, p2, p2 - p1))
 
-          val distinctCounts: Map[Int, Int] = (p1 + 1 until p2).map(s => (s, Primes.primeFactorization(s).size)).toMap
+          // For each number, find the size of the prime factorization map (i.e. the distinct factors)
+          // then find whether there exist 4 consecutive numbers with 4 distinct factors
+          val distinctCounts: Map[Int, Int] = (p1 + 1 until p2)
+            .map(s => (s, Primes.primeFactorization(s).size)).toMap
           def isConsecutive (m1: Map[Int, Int]) : ((Int, Int)) => Boolean =
             { case (k, v) => !((k until k + 4).exists(m1(_) != 4)) }
 
