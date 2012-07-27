@@ -38,9 +38,8 @@ object p46 extends ProjectEulerApp {
    def search (numbers: List[Int]) : Option[Int] =
     numbers match {
       case xh::xt => {
-        println("-- Examining %d..." format xh)
-        lazy val hasSum = primesLEq(xh).exists(y => isPerfectSquare((xh - y) / 2))
-        if (!hasSum) Some(xh) else search(xt)
+        lazy val hasNoSum = !((1 until math.sqrt(xh).toInt) exists (y => Primes.isPrime(xh - 2 * (y * y))))
+        if (hasNoSum) Some(xh) else search(xt)
       }
       case Nil => None
     }

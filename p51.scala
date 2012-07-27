@@ -35,9 +35,9 @@ object p51 extends ProjectEulerApp {
   val INITIAL_BIT_ARRAY = Integer.parseInt("1111111", 2);
 
   def offsetPermutations(bitarray: Int, perms: Map[Int, List[Int]]) : Map[Int, List[Int]] = {
-    def decimalLiteral(rem: Int) : Int = if (rem == 0) rem else (rem & 1) + 10 * decimalLiteral(rem >> 1)
+    def toDecimalLiteral(rem: Int) : Int = if (rem == 0) rem else (rem & 1) + 10 * toDecimalLiteral(rem >> 1)
     def inverse = bitarray ^ bitarray // XOR with 1111, how do you find the closest power of 2 to itself?
-    if (bitarray == 0) perms else offsetPermutations(bitarray - 1, decimalLiteral(bitarray)::perms)
+    if (bitarray == 0) perms else offsetPermutations(bitarray - 1, toDecimalLiteral(bitarray)::perms)
   }
   val permutations = offsetPermutations(INITIAL_BIT_ARRAY, List())
 

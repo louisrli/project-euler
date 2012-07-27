@@ -6,6 +6,8 @@
 
 package euler.helpers
 
+import collection.mutable.BitSet
+
 /**
  * The companion object wraps the inner primes class
  * It needs to be "initialized" with a certain limit
@@ -36,11 +38,13 @@ object Primes {
   /** Initialize a prime sieve to a certain limit. Required to generate primes */
   def initializeSieve(lim: Int) = { helper = new Primes(lim) }
 
-  def isPrime (x : Int) : Boolean = helper.sieve(x)
-  def nthPrime(n: Int) : Int = helper.primes(n)
+  def isPrime (x : Int) : Boolean =
+    if (x > helper.limit) throw new IndexOutOfBoundsException(x.toString) else helper.sieve(x)
 
-  def primes = helper.primes
-  def primesLEq(n : Int) = helper.primes.dropRight(n - 1)
+  def nthPrime(n: Int) : Int = helper.sieve.toIndexedSeq(n)
+
+  def primes : List[Int] = helper.sieve.toList
+  def primesLEq(n : Int) = helper.sieve.filter(_ <= n)
 
 }
 
@@ -51,22 +55,23 @@ private class Primes(val limit: Int) {
    * `Primes`: A list of primes up until limit
    * `Factors`: factors(n) returns a factor of n. convenient for factoring numbers known to be not-prime in the sieve.
    */
-  private lazy val (sieve, primes, factors) = initializeSieve(limit + 1)
+  private lazy val (sieve, factors) = initializeSieve(limit + 1)
 
-  private def initializeSieve(lim: Int): (Seq[Boolean], List[Int], Seq[Option[Int]]) = {
-    // Let sieve(n) represent n for simplicity
-    // The sieve itself is a pair (Bool, Option[Int]) where Option[Int] is a factor
+  private def initializeSieve(lim: Int): (scala.collection.mutable.BitSet, Seq[Option[Int]]) = {
+    // Uses a bitset to store whether a number is prime or not
     println("Initializing sieve...")
-    val tmpSieve = Array.fill(lim)(true);
+    val tmpSieve = scala.collection.mutable.BitSet()
+    val searched = scala.collection.mutable.BitSet()
     val tmpFactors = Array.fill[Option[Int]](lim)(None)
-    tmpSieve.update(0, false); tmpSieve.update(1, false)
-    for (i <- 2 until lim if tmpSieve(i) == true) {
+
+    for (i <- 2 until lim if !searched(i)) {
+      tmpSieve.add(i); searched.add(i)
       for (j <- i * 2 until lim by i) {
-        tmpSieve.update(j, false)
+        searched.add(j)
         tmpFactors.update(j, Some(i))
       }
     }
-    (tmpSieve.toSeq, tmpSieve.indices.filter(tmpSieve(_) == true).toList, tmpFactors)
+    (tmpSieve, tmpFactors)
   }
 
 }
