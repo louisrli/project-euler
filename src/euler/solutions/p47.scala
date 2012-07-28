@@ -66,6 +66,7 @@ object p47 extends ProjectEulerApp {
   }
   println(find(Primes.primes))
 
+  val displayedAnswer = 134043
   /**
    * Scratch
    * narrow: search list of primes where x_(n + 1) - x(n) > = 4

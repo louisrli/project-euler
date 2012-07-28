@@ -10,7 +10,7 @@ trait ProjectEulerApp extends App {
 
   def text: String
 
-  def strippedText = text.stripMargin
+  private def strippedText = text.stripMargin
 
   override def delayedInit(body: => Unit) = {
     super.delayedInit(body)
@@ -29,4 +29,6 @@ trait ProjectEulerApp extends App {
   def printAnswer(x : Any) : Unit = {
     println("== Answer: " + x)
   }
+
+  val displayedAnswer : Any
 }
