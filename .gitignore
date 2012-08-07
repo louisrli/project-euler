@@ -1,6 +1,7 @@
 \#*
-euler/
-out/
+/euler/
+/out/
+/target/
 *~
 *.iml
 .idea/

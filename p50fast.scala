@@ -32,4 +32,5 @@ object p50fast extends ProjectEulerApp {
 
   def number = p50.number
   def text = p50.text
+  val displayedAnswer = 997651
 }

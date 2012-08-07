@@ -88,5 +88,6 @@ object p51 extends ProjectEulerApp {
       }
     }
   }
-  println(search(Primes.primes))
+  printAnswer(search(Primes.primes))
+  val displayedAnswer = 121313
 }

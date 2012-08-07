@@ -30,5 +30,7 @@ object p48 extends ProjectEulerApp {
     }
   )
 
-  println(a)
+  printAnswer(a)
+  val displayedAnswer = "9110846700"
+
 }

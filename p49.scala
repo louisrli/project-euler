@@ -1,7 +1,6 @@
 package euler.solutions
 
 import euler.helpers._
-import util.Sorting
 
 /**
  * @author Louis
@@ -9,6 +8,18 @@ import util.Sorting
  */
 
 object p49 extends ProjectEulerApp {
+  def number = 49
+  def text =
+    """
+      |The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330,
+      |is unusual in two ways: (i) each of the three terms are prime, and, (ii) each of the
+      |4-digit numbers are permutations of one another.
+      |
+      |There are no arithmetic sequences made up of three 1-, 2-, or 3-digit primes,
+      |exhibiting this property, but there is one other 4-digit increasing sequence.
+      |
+      |What 12-digit number do you form by concatenating the three terms in this sequence?
+    """
 
   val LIMIT = 10000
   val MAXGAP: Int = 9000 / 3
@@ -50,18 +61,7 @@ object p49 extends ProjectEulerApp {
 
   println(search(knownSieve, fourDigitPrimes))
 
-  def number = 49
-  def text =
-    """
-      |The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330,
-      |is unusual in two ways: (i) each of the three terms are prime, and, (ii) each of the
-      |4-digit numbers are permutations of one another.
-      |
-      |There are no arithmetic sequences made up of three 1-, 2-, or 3-digit primes,
-      |exhibiting this property, but there is one other 4-digit increasing sequence.
-      |
-      |What 12-digit number do you form by concatenating the three terms in this sequence?
-    """
+  val displayedAnswer = "296962999629"
 
   // Narrow search space:
   // -- Eliminate any prime whose permutation has been checked already

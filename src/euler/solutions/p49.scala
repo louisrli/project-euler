@@ -1,7 +1,6 @@
 package euler.solutions
 
 import euler.helpers._
-import util.Sorting
 
 /**
  * @author Louis

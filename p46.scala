@@ -49,6 +49,8 @@ object p46 extends ProjectEulerApp {
       .filter(!isPrime(_))  // Filter for composite numbers
       .toList))
 
+  val displayedAnswer = 5777
+
 
   /* Scratch notes
   // Create a sieve
