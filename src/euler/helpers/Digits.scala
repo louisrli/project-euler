@@ -7,8 +7,11 @@ package euler.helpers
 
 object Digits {
 
-  def digitSum(n: Int) =
-    toDigitList(n).foldLeft(0)(_ + _)
+  def digitSum(n: BigInt) = {
+    def inner(rem: BigInt, sum: BigInt): BigInt =
+      if (rem == 0) sum else inner(rem / 10, sum + (rem % 10))
+    inner(n, 0)
+  }
 
   def digitCount(n: Int) =
     toDigitList(n).size

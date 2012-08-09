@@ -94,8 +94,6 @@ object p54 extends ProjectEulerApp {
 
   val ans: Int = sessions count {
     hands => {
-      println(handValue(hands._1), handValue(hands._2))
-      println(handValue(hands._1) > handValue(hands._2))
       handValue(hands._1) > handValue(hands._2)
     }
   }
