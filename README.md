@@ -14,6 +14,9 @@ These are included so that the solutions are complete, but I'm stashing them awa
 **Location**: src/euler/archives
 
 ## Miscellaneous
+
+![Project Euler Badge](http://projecteuler.net/profile/3vl.png)
+
 Feel free to be my friend on Project Euler! Friend key:
 
 ```
