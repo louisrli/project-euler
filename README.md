@@ -2,7 +2,7 @@
 Mathematical problem solving from [Project Euler](http://projecteuler.net)
 
 ## 46 until _ (Scala, 07/2012)
-This set was started in July 2012. They are Scala packages and not Scala scripts.
+This set was started in July 2012. They are Scala packages and not Scala scripts. Must be run with Scala 2.9.x.
 
 **Location**: src/euler/solutions.
 
