@@ -29,12 +29,6 @@ object p58 extends ProjectEulerApp {
                |If this process is continued, what is the side length of the square spiral
                |for which the ratio of primes along both diagonals first falls below 10%?"""
 
-/*
-  val LIMIT = 50000000
-  Primes.initializeSieve(LIMIT)
-  val primes = Primes.primes
-    */
-
   // Given a length and a *previous* number of primes and diagonal, computes a new ratio
   def computeSpiral(length: Int, numPrimes: Int, numDiagonal: Int) : Int = {
     // Compute the starting and ending points for this spiral, i.e. 10 and 25
