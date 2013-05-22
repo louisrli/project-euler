@@ -13,6 +13,13 @@ object Digits {
     inner(n, 0)
   }
 
+  def digitCount(n: BigInt): Int = {
+    def inner(rem: BigInt, count: Int): Int = {
+      if (rem == 0) count else inner(rem / 10, count + 1)
+    }
+    inner(n, 0)
+  }
+
   def digitCount(n: Int) =
     toDigitList(n).size
 
