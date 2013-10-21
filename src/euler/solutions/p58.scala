@@ -53,5 +53,5 @@ object p58 extends ProjectEulerApp {
   // Start computing at length 3 (before that, we only have "1" in the center)
   println("Answer: " + computeSpiral(3, 0, 1))
 
-  val displayedAnswer = 0
+  val displayedAnswer = 26241
 }
